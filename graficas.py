@@ -4,7 +4,7 @@ import numpy as np
 from reader import read_json_file
 
 
-def parse_aire_dict(aire_dict):
+def parse_aire_dict(lista_aire_dict):
     """Esta función toma los datos originales y los parsea en un formato
     más sencillo de manejar para nuestros fines.
 
@@ -15,7 +15,7 @@ def parse_aire_dict(aire_dict):
         dict: Datos parseados.
     """
     data_por_estacion = dict()
-    for data in lista_data_aire:
+    for data in lista_aire_dict:
         estacion = data["título"]
         fecha = data["fecha"]
         if estacion not in data_por_estacion:
@@ -43,9 +43,9 @@ def parse_aire_dict(aire_dict):
     return data_por_estacion
 
 aire_dict = read_json_file("datos_aire.json")
-lista_data_aire = aire_dict["calidadairemediatemporales"]["calidadairemediatemporal"]
+lista_aire_dict = aire_dict["calidadairemediatemporales"]["calidadairemediatemporal"]
 
-data_por_estacion = parse_aire_dict(lista_data_aire)
+data_por_estacion = parse_aire_dict(lista_aire_dict)
 
 # codigos_estacion_dict = {lista_data_aire for key in lista_data_aire}
 
